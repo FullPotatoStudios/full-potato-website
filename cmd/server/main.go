@@ -1,15 +1,31 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v3"
-	"github.com/gofiber/fiber/v3/log"
+	"log"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html/v2"
 )
 
 func main() {
-	app := fiber.New()
 
-	app.Get("/", func(c fiber.Ctx) error {
-		return c.SendString("Hello, World 👋!")
+	engine := html.New("./web/views", ".html")
+
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
+
+	app.Static("/", "./public")
+
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.Render("index", fiber.Map{
+			"Title":   "FPS",
+			"Message": "Who is a full potato?",
+		})
+	})
+
+	app.Get("/potato", func(c *fiber.Ctx) error {
+		return c.SendString("Yes we are.")
 	})
 
 	log.Fatal(app.Listen(":3000"))
