@@ -1,18 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>{{.Title}}</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{.Title}}</title>
-    <link rel="icon" href="/favicon.png" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/icons/site.webmanifest" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
     <script
       src="https://unpkg.com/htmx.org@1.9.10"
       integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body>
-    <div>{{.Message}}</div>
-    <button hx-get="/potato" hx-swap="outerHTML">I am</button>
+  <body class="bg-emerald-200 dark:bg-emerald-950 flex flex-col min-h-screen">
+    <header class="bg-emerald-400 dark:bg-emerald-700">
+      <nav
+        class="flex justify-center row-span-full p-4 max-w-screen-xl mx-auto"
+      >
+        <button class="dark:text-white text-3xl px-4">potato</button>
+        <button class="dark:text-white text-3xl px-4">whoispotato</button>
+      </nav>
+    </header>
+    <main class="flex-1 p-4 max-w-screen-xl mx-auto">
+      <h1 class="text-3xl font-bold underline dark:text-white">{{.Message}}</h1>
+      <button class="dark:text-white" hx-get="/potato" hx-swap="innerHTML">
+        I am
+      </button>
+    </main>
+    <footer class="flex flex-row max-w-screen-xl mx-auto">
+      <div class="flex-auto p-4">
+        <p class="dark:text-white">© 2024 FullPotatoStudios</p>
+      </div>
+    </footer>
   </body>
 </html>

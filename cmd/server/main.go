@@ -15,7 +15,8 @@ func main() {
 		Views: engine,
 	})
 
-	app.Static("/", "./public")
+	app.Static("/icon", "./web/static/icon")
+	app.Static("/", "./web/static")
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("index", fiber.Map{
